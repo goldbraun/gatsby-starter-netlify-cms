@@ -12,6 +12,15 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "authors"
+    label: "Authors"
+    folder: "src/pages/authors"
+    create: true
+    identifier_field: name
+    fields: 
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Shortname", name: "shortname", widget: "string", hint: "funny and short"}
+
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
@@ -26,9 +35,7 @@ collections:
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-      - label: Author
-        name: author
-        widget: object
+      - {label: "Author", name: "author", widget: "relation", collection: "authors", displayFields: "shortname", valueField: "name"}
 
   - name: "pages"
     label: "Pages"
